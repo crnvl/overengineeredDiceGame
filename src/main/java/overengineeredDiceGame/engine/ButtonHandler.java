@@ -19,10 +19,7 @@ public class ButtonHandler implements MouseListener {
         for (int i = 0; i < gameLogic.getRenderInfo().size(); i++) {
             SpriteInfo element = gameLogic.getRenderInfo().get(i);
 
-            if (
-                    e.getX() > element.getPosX() && e.getX() < element.getPosX() + 16 * 6
-                            && e.getY() > element.getPosY() && e.getY() < element.getPosY() + 16 * 6
-            ) {
+            if (e.getX() > element.getPosX() && e.getX() < element.getPosX() + 16 * 6 && e.getY() > element.getPosY() && e.getY() < element.getPosY() + 16 * 6) {
                 switch (element.getSpriteName()) {
                     case "lock_open":
                         gameLogic.toggleLock(i - 5);
