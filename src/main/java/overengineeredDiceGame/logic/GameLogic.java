@@ -75,29 +75,6 @@ public class GameLogic {
                 }
             }
         }
-
-        int previous = countNumbers[0];
-        ArrayList<Integer> streaks = new ArrayList<>();
-        int streak = 0;
-        for (int i = 1; i < countNumbers.length; i++) {
-            if (countNumbers[i] >= 1 && countNumbers[i] == previous + 1) {
-                streaks.add(streak, countNumbers[i]);
-                streak++;
-            } else {
-                streak = 0;
-            }
-
-            previous = countNumbers[i];
-        }
-        System.out.println(streaks);
-
-        for (Integer integer : streaks) {
-            if (streak > 3) {
-                for (int j = 0; j <= integer; j++) {
-                    renderInfo.add(new SpriteInfo(Integer.toString(streaks.get(j)), 15 + (16 * j * 6), 16 + (16 * row * 6)));
-                }
-            }
-        }
         print = false;
     }
 }
