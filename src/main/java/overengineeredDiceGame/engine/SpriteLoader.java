@@ -18,7 +18,7 @@ public class SpriteLoader {
         sprites = new HashMap<>();
 
         long preCalc = new Date().getTime();
-        File assets = new File(".\\src\\main\\java\\overengineeredDiceGame\\engine\\assets\\");
+        File assets = new File("./src/main/java/overengineeredDiceGame/engine/assets/");
 
         for (int i = 0; i < Objects.requireNonNull(assets.listFiles()).length; i++) {
             File sprite = Objects.requireNonNull(assets.listFiles())[i];
