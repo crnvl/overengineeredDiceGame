@@ -85,8 +85,6 @@ public class GameLogic {
                 streetStart = i;
         }
 
-        System.out.println(streak);
-
         if (streak > 3) {
             row++;
             for (int i = streetStart; i < streak; i++) {
