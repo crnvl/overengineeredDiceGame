@@ -75,6 +75,24 @@ public class GameLogic {
                 }
             }
         }
+
+        int streak = 1;
+        int streetStart = 0;
+        for (int i = 0; i < countNumbers.length; i++) {
+            if (i > 0 && countNumbers[i] > 0 && countNumbers[i - 1] > 0)
+                streak++;
+            else
+                streetStart = i;
+        }
+
+        System.out.println(streak);
+
+        if (streak > 3) {
+            row++;
+            for (int i = streetStart; i < streak; i++) {
+                renderInfo.add(new SpriteInfo(Integer.toString(i + 1), 15 + (16 * i * 6), 16 + (16 * row * 6)));
+            }
+        }
         print = false;
     }
 }
