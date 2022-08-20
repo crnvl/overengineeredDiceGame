@@ -1,7 +1,5 @@
 package overengineeredDiceGame.logic;
 
-import java.util.Arrays;
-
 public class Wuerfelbecher {
     private int[] augenzahlen;
 
@@ -30,8 +28,8 @@ public class Wuerfelbecher {
 
     public int gibAugensumme() {
         int sum = 0;
-        for (int i = 0; i < augenzahlen.length; i++) {
-            sum += augenzahlen[i];
+        for (int j : augenzahlen) {
+            sum += j;
         }
         return sum;
     }
@@ -53,7 +51,7 @@ public class Wuerfelbecher {
         for (int zahl = 1; zahl <= 6; zahl++) {
             int anzahl = 0;
             for (int i = 0; i < 5; i++) {
-                if(augenzahlen[i] == zahl)
+                if (augenzahlen[i] == zahl)
                     anzahl++;
             }
 
@@ -67,7 +65,7 @@ public class Wuerfelbecher {
         for (int zahl = 1; zahl <= 6; zahl++) {
             int anzahl = 0;
             for (int i = 0; i < 5; i++) {
-                if(augenzahlen[i] == zahl)
+                if (augenzahlen[i] == zahl)
                     anzahl++;
             }
 
@@ -81,7 +79,7 @@ public class Wuerfelbecher {
         for (int zahl = 1; zahl <= 6; zahl++) {
             int anzahl = 0;
             for (int i = 0; i < 5; i++) {
-                if(augenzahlen[i] == zahl)
+                if (augenzahlen[i] == zahl)
                     anzahl++;
             }
 
@@ -92,25 +90,61 @@ public class Wuerfelbecher {
     }
 
     public boolean wuerfelSindKleineStrasse() {
-        int[] kleineStrasse = new int[]{1, 2, 3, 4, 1};
+        sortiereWuerfel();
+        int streak = 0;
+        for (int i = 0; i < augenzahlen.length - 1; i++) {
+            if (augenzahlen[i + 1] != augenzahlen[i] + 1) {
+                streak = 0;
+            }else {
+                streak++;
+            }
+            if(streak == 3)
+                return true;
+        }
+        return false;
+    }
 
+    public boolean wuerfelSindGrosseStrasse() {
+        sortiereWuerfel();
+        int streak = 0;
+        for (int i = 0; i < augenzahlen.length - 1; i++) {
+            if (augenzahlen[i + 1] != augenzahlen[i] + 1) {
+                streak = 0;
+            }else {
+                streak++;
+            }
+            if(streak == 4)
+                return true;
+        }
+        return false;
+    }
 
+    public boolean wuerfelSindFullHouse() {
+        int[] count = new int[6];
+        for (int j : augenzahlen) {
+            count[j - 1] += 1;
+        }
+
+        boolean three = false, two = false;
+        for (int j : count) {
+            if (j == 3)
+                three = true;
+            if (j == 2)
+                two = true;
+        }
+
+        return (three && two);
     }
 
     public void sortiereWuerfel() {
         for (int i = 0; i < augenzahlen.length - 1; i++) {
             for (int j = 0; j < augenzahlen.length - 1; j++) {
-                if(augenzahlen[i] > augenzahlen[i + 1]) {
+                if (augenzahlen[i] > augenzahlen[i + 1]) {
                     int temp = augenzahlen[i];
                     augenzahlen[i] = augenzahlen[i + 1];
                     augenzahlen[i + 1] = temp;
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        Wuerfelbecher w = new Wuerfelbecher(new int[5]);
-        System.out.println(w.wuerfelSindKleineStrasse());;
     }
 }
