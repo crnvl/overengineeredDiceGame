@@ -76,17 +76,12 @@ public class Wuerfelbecher {
     }
 
     public boolean wuerfelSindKniffel() {
-        for (int zahl = 1; zahl <= 6; zahl++) {
-            int anzahl = 0;
-            for (int i = 0; i < 5; i++) {
-                if (augenzahlen[i] == zahl)
-                    anzahl++;
+        for (int i = 0; i < augenzahlen.length - 1; i++) {
+            if (augenzahlen[i + 1] != augenzahlen[i]) {
+                return false;
             }
-
-            if (anzahl == 5)
-                return true;
+            return true;
         }
-        return false;
     }
 
     public boolean wuerfelSindKleineStrasse() {
