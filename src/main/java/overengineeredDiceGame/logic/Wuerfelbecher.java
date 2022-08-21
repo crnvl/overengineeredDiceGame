@@ -80,8 +80,8 @@ public class Wuerfelbecher {
             if (augenzahlen[i + 1] != augenzahlen[i]) {
                 return false;
             }
-            return true;
         }
+        return true;
     }
 
     public boolean wuerfelSindKleineStrasse() {
